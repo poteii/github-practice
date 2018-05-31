@@ -28,19 +28,24 @@ export class ProfileSearchResultPage {
   }
 
   getUserInfo(): void {
-    this.githubProvider.mockGetUserInformation(this.username).subscribe(
-      (data: User) => {
-        console.log(data);
-        this.user = data;
+    // this.githubProvider.mockGetUserInformation(this.username).subscribe(
+    //   (data: User) => {
+    //     console.log(data);
+    //     this.user = data;
 
-      }
-    );
+    //   }
+    // );
 
-    this.githubProvider.mockGetRoporitoryInfomation(this.username).subscribe(
-      (data: Repository[]) => {
-        this.repositories = data;
-      }
-    );
+    // this.githubProvider.mockGetReporitoryInfomation(this.username).subscribe(
+    //   (data: Repository[]) => {
+    //     this.repositories = data;
+    //   }
+    // );
+
+
+    this.githubProvider.getUserInfomation(this.username).subscribe((data: User) => this.user = data);
+
+    this.githubProvider.getReporitoryInfomation(this.username).subscribe((data: Repository[]) => this.repositories = data);
 
   }
 
